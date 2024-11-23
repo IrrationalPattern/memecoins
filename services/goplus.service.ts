@@ -45,7 +45,14 @@ export class GoPlusService {
             return null;
         }
 
+        console.log(address, response);
+
         const token = response.result[address];
+
+        if (!token) {
+            console.error('Token not found');
+            return null;
+        }
 
         const owner = token.owner_address;
         const isAntiWhale = stringToBoolean(token.is_anti_whale);
