@@ -2,7 +2,8 @@ import clsx from 'clsx';
 import { GoPlusService } from "@/services/goplus.service";
 
 
-interface GoPlusCheckResultProps {
+export interface GoPlusCheckResultProps {
+    className?: string;
     address: string;
 }
 
@@ -10,7 +11,7 @@ async function verifyToken(address: string) {
     return address ? await GoPlusService.verifyToken(address) : null;
 }
 
-export const GoPlusVerification = async ({ address }: GoPlusCheckResultProps) => {
+export const GoPlusVerification = async ({ className, address }: GoPlusCheckResultProps) => {
     const goPlusVerificationResult = await verifyToken(address);
 
     if (!goPlusVerificationResult) {
@@ -20,7 +21,7 @@ export const GoPlusVerification = async ({ address }: GoPlusCheckResultProps) =>
     const { threats, isAllChecksPassed } = goPlusVerificationResult;
 
     return (
-        <div className="collapse bg-base-200 collapse-arrow">
+        <div className={clsx("collapse bg-base-200 collapse-arrow", className)}>
             <input type="checkbox"/>
             <div className="flex justify-between items-center collapse-title text-xl font-medium">
                 Go+ Verification

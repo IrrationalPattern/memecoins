@@ -1,14 +1,14 @@
 'use client';
 
-import { useState } from 'react';
+import {FormEventHandler, useState} from 'react';
 import { useRouter } from 'next/navigation';
 
 export default function HomePage() {
     const [tokenAddress, setTokenAddress] = useState('');
     const router = useRouter();
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
+    const handleSubmit: FormEventHandler<HTMLFormElement> = (event) => {
+        event.preventDefault();
         if (tokenAddress) {
             // Redirect to the token details page
             router.push(`/token/${tokenAddress}`);

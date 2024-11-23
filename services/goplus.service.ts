@@ -53,7 +53,7 @@ export class GoPlusService {
 
         const verificationData: GoPlusVerificationChecks = {
             isNoBuyTax: token.sell_tax === '',
-            isNoSellTax: token.sell_tax === '',
+            isNoSellTax: token.buy_tax === '',
             isNoExternalCall: !stringToBoolean(token.external_call),
             isNoHiddenOwner: !stringToBoolean(token.hidden_owner),
             isOpenSource: stringToBoolean(token.is_open_source),
